@@ -63,6 +63,7 @@ public class VideoGameTournaments {
 	
 	public static void main(String[] args) {
 		int [] difficulties = {2,4,1,6};
+//		int [] difficulties = {1,2,3,4};
 		int [] prizes = {3,2,8,7};
 		
 		fillDPArray(difficulties, prizes);
