@@ -21,6 +21,7 @@ public class VideoGameTournaments {
 	
 	public static void fillDPArray(int [] difficulties, int []prizes) {
 		dpArray = new int [difficulties.length];
+		dpArray[0] = prizes[0];
 		for (int i = 1; i < difficulties.length; i++) {
 			for (int j = i; j >= 0; j--) {
 				if (difficulties[i] >= difficulties[j])
@@ -63,6 +64,7 @@ public class VideoGameTournaments {
 	public static void main(String[] args) {
 		int [] difficulties = {2,4,1,6};
 		int [] prizes = {3,2,8,7};
+		
 		fillDPArray(difficulties, prizes);
 		System.out.println(arrayToString(dpArray));
 	}
