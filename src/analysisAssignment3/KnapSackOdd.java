@@ -67,7 +67,6 @@ public class KnapSackOdd {
 		
 		//AssumefurtherthatC=n2 andthatn<=wj <=n2 forallj.
 		System.out.println(knapSack(0, 16));
-
 		
 	}
 
