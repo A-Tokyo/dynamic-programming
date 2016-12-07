@@ -17,11 +17,17 @@ import java.util.ArrayList;
  *
  */
 public class VideoGameTournaments {
-	static int [][] dpArray;
+	static int [] dpArray;
 	
 	public static void fillDPArray(int [] difficulties, int []prizes) {
-		dpArray = new int [difficulties.length][difficulties.length];
-		// TODO solve
+		dpArray = new int [difficulties.length];
+		for (int i = 1; i < difficulties.length; i++) {
+			for (int j = i; j >= 0; j--) {
+				if (difficulties[i] >= difficulties[j])
+					dpArray[i] = Math.max(dpArray[i], dpArray[j] + prizes[i]);
+			}
+			dpArray[i] = Math.max(dpArray[i], dpArray[i-1]);
+		}
 	}
 	
 	public static ArrayList<Integer> getTournaments(int [] difficulties, int []prizes) {
@@ -43,11 +49,21 @@ public class VideoGameTournaments {
 		return result;
 	}
 	
+	public static String arrayToString(int [] array) {
+		String result = "";
+		if(array.length>0)
+			result+=("[ ");
+		    for(int i = 0; i<array.length; i++){
+		    	result+=(array[i] + (i==array.length-1?" ]":", "));
+		    }
+		    result+="\n";
+		return result;
+	}
+	
 	public static void main(String[] args) {
-		int [] difficulties = {};
-		int [] prizes = {};
-		ArrayList<Integer> tournaments = getTournaments(difficulties, prizes);
-		System.out.println(tournaments);
+		int [] difficulties = {2,4,1,6};
+		int [] prizes = {3,2,8,7};
+		fillDPArray(difficulties, prizes);
 		System.out.println(arrayToString(dpArray));
 	}
 
